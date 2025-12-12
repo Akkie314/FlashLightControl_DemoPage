@@ -46,8 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (light.isTrackAvailable()) {
             flashState = lightBtn.checked;
+            if (!flashState) {
+                await light.turnOff();
+            }
         } else {
             lightBtn.checked = false;
+            await light.turnOff();
             flashState = false;
         }
     });
